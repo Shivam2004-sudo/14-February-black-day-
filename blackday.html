@@ -1,0 +1,156 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Black Day - 14 Feb 2019</title>
+    <style>
+        body {
+            background-color: black;
+            color: white;
+            text-align: center;
+            font-family: Arial, sans-serif;
+            margin: 0;
+            padding: 0;
+            overflow: hidden;
+            display: flex;
+            flex-direction: column;
+            justify-content: center;
+            height: 100vh;
+            position: relative;
+        }
+        .flag {
+            width: 300px;
+            height: 200px;
+            margin: 20px auto;
+            border: 2px solid white;
+            display: flex;
+            flex-direction: column;
+        }
+        .saffron { background-color: #FF9933; height: 33%; }
+        .white { background-color: white; height: 34%; position: relative; }
+        .green { background-color: #138808; height: 33%; }
+        .chakra {
+            width: 60px;
+            height: 60px;
+            border: 3px solid navy;
+            border-radius: 50%;
+            position: absolute;
+            top: 50%;
+            left: 50%;
+            transform: translate(-50%, -50%);
+            animation: rotateChakra 3s linear infinite;
+        }
+        @keyframes rotateChakra {
+            0% { transform: translate(-50%, -50%) rotate(0deg); }
+            100% { transform: translate(-50%, -50%) rotate(360deg); }
+        }
+        .candle {
+            position: relative;
+            width: 20px;
+            height: 100px;
+            background: white;
+            margin: 30px auto;
+            border-radius: 5px;
+        }
+        .flame {
+            position: absolute;
+            top: -25px;
+            left: 50%;
+            width: 20px;
+            height: 30px;
+            background: orange;
+            border-radius: 50%;
+            transform: translateX(-50%);
+            animation: flicker 1s infinite alternate;
+        }
+        @keyframes flicker {
+            0% { transform: translateX(-50%) scaleY(1); opacity: 1; }
+            50% { transform: translateX(-50%) scaleY(1.2); opacity: 0.8; }
+            100% { transform: translateX(-50%) scaleY(1); opacity: 1; }
+        }
+        .text {
+            font-size: 24px;
+            font-weight: bold;
+            margin-top: 20px;
+            text-shadow: 2px 2px 5px red;
+        }
+        .pulwama {
+            font-size: 20px;
+            margin-top: 10px;
+            color: yellow;
+            text-shadow: 1px 1px 3px black;
+        }
+        .created {
+            font-size: 18px;
+            position: absolute;
+            bottom: 20px;
+            left: 50%;
+            transform: translateX(-50%);
+            color: white;
+        }
+        .hearts {
+            font-size: 24px;
+            position: absolute;
+            bottom: 0;
+            left: 50%;
+            transform: translateX(-50%);
+        }
+        .flower {
+            position: absolute;
+            top: -50px;
+            font-size: 24px;
+            animation: fall linear infinite;
+        }
+        @keyframes fall {
+            0% { transform: translateY(0); opacity: 1; }
+            100% { transform: translateY(100vh); opacity: 0; }
+        }
+    </style>
+</head>
+<body>
+
+    <!-- Tiranga Flag -->
+    <div class="flag">
+        <div class="saffron"></div>
+        <div class="white">
+            <div class="chakra"></div>
+        </div>
+        <div class="green"></div>
+    </div>
+
+    <!-- Burning Candle -->
+    <div class="candle">
+        <div class="flame"></div>
+    </div>
+
+    <!-- Text Section -->
+    <div class="text">14 Feb 2019 Black Day</div>
+    <div class="pulwama">Pulwama Hamla - A Tribute to the Brave Martyrs</div>
+
+    <!-- Created By (Bottom Center) -->
+    <div class="created">Created by Shivam Srivastava</div>
+    <div class="hearts">🧡🤍💚</div>
+
+    <!-- JavaScript for Flower Drop Effect -->
+    <script>
+        const flowers = ["🌺", "🍁", "🌷", "🌸", "🏵️", "🍂"];
+
+        function createFlower() {
+            const flower = document.createElement("div");
+            flower.classList.add("flower");
+            flower.innerText = flowers[Math.floor(Math.random() * flowers.length)];
+            flower.style.left = Math.random() * 100 + "vw";
+            flower.style.animationDuration = Math.random() * 3 + 2 + "s"; // 2-5s fall time
+            document.body.appendChild(flower);
+
+            setTimeout(() => {
+                flower.remove();
+            }, 5000); // Remove after animation ends
+        }
+
+        setInterval(createFlower, 300); // Generate flowers every 300ms
+    </script>
+
+</body>
+</html>
